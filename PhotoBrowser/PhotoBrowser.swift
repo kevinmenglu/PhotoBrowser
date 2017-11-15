@@ -46,6 +46,8 @@ public extension PhotoBrowserDelegate {
 
 open class PhotoBrowser: UIPageViewController {
     
+    open static var accessToken: String?
+    
     var isFullScreen = false
     var headerView: PBNavigationBar?
     open var photos: [Photo]? {

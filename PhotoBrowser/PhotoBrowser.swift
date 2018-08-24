@@ -29,9 +29,6 @@ public extension PhotoBrowserDelegate {
     }
     func photoBrowser(_ browser: PhotoBrowser, longPressOnPhoto photo: Photo, index: Int) {}
     func photoBrowser(_ browser: PhotoBrowser, didShowPhotoAtIndex index: Int) {}
-    func photoBrowser(_ browser: PhotoBrowser, willSharePhoto photo: Photo) {
-        browser.defaultShareAction()
-    }
     func photoBrowser(_ browser: PhotoBrowser, canSelectPhotoAtIndex index: Int) -> Bool {
         return true
     }
@@ -406,6 +403,10 @@ extension PhotoBrowser: PhotoPreviewControllerDelegate {
     
     func photoPreviewController(_ controller: PhotoPreviewController, didShowPhotoAtIndex index: Int) {
         photoBrowserDelegate?.photoBrowser(self, didShowPhotoAtIndex: index)
+    }
+    
+    func photoBrowser(_ browser: PhotoBrowser, willSharePhoto photo: Photo) {
+        photoBrowserDelegate?.photoBrowser(self, willSharePhoto: photo)
     }
     
     func photoPreviewController(_ controller: PhotoPreviewController, doDraging dragProgress: CGFloat) {
